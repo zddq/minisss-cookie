@@ -92,7 +92,7 @@ console.log(MSCookie.get("cookieName"));
 | path | string | 可访问路径 | 当前文档路径 |
 | expires | Date | 过期时间 | 会话模式(浏览器关闭后清除所有会话 cookie) |
 | maxAge | number | 最大存活时间(单位: s) maxAge 高于 expires | 会话模式(浏览器关闭后清除所有会话 cookie) |
-| httpOnly | boolean | 阻止JS脚本获取该 cookie 值 <br>**_服务端设置有效<br>客户端设置无效_** | false |
+| httpOnly | boolean | 阻止JS获取该 cookie 值 <br>**_服务端设置有效<br>客户端设置无效_** | false |
 | secure | boolean | 只允许 https 域名访问 | false |
 | sameSite | "Strict", "Lax", "None" | 允许跨域发送的范围 <br>允许同源 - Strict <br>允许跨域 - Lax <br>允许所有 - None 需同时设置 secure 属性 | 浏览器自带默认值 |
 | partitioned | boolean | 是否开启分区 | false |
