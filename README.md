@@ -88,10 +88,10 @@ console.log(MSCookie.get("cookieName"));
 
 | 属性 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
-| domain | string | 域名 | 默认当前文档路径域部分 |
-| path | string | 路径 | 默认当前文档位置的路径 |
-| expires | Date | 过期时间 | 未设置则会在对话结束时过期 |
-| maxAge | number(单位: s) | 最大存活时间(推荐) <br>MaxAge 优先级高于 Expires | 空 |
+| domain | string | 域名 | 默认当前文档域名 |
+| path | string | 路径 | 默认当前文档路径 |
+| expires | Date | 过期时间 | 默认会话模式 |
+| maxAge | number(单位: s) | 最大存活时间(推荐) <br>maxAge 优先级高于 expires | 空 |
 | httpOnly | boolean | 是否阻止客户端脚本访问该Cookie <br>**_只能在服务器端设置，不能在客户端设置_** | false |
 | secure | boolean | 是否只允许 HTTPS 请求访问 | false |
 | sameSite | "Strict", "Lax", "None" | 允许的跨域请求<br>Strict - 只允许同源的请求访问 <br>Lax - 允许跨域的请求访问 <br>None - 会在所有请求中发送，但需要同时设置Secure属性 | 空 |
