@@ -1,0 +1,27 @@
+{
+  "exclude": ["node_modules", "dist"],
+  "include": ["src", "types"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+
+    // 模块配置
+    "moduleResolution": "node",
+    "module": "preserve",
+    "target": "es6",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    // 功能支持
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+
+    // 类型检查
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true
+  }
+}
