@@ -1,5 +1,5 @@
 /**
- * mini-cookie 设置可配置参数
+ * @minisss/cookie 可配置参数
  */
 interface IConfig<CTX extends any = any> {
   /**
@@ -65,22 +65,24 @@ interface IConfig<CTX extends any = any> {
 }
 
 /**
- * mini方法与属性
+ * @minisss/cookie 相关静态方法与属性
  */
-interface IStatic<MCD extends IMiniCookieData, CTX> {
+interface IStatic<MCD extends IMSCookieData, CTX> {
+  /** 当前版本号 */
+  VERSION: string;
   /**
-   * 创建一个 MiniCookie 实例
+   * 创建一个 @minisss/cookie 实例
    * @param config 配置
-   * @return MiniCookie 实例
+   * @return MSCookie 实例
    */
-  create(config?: IConfig<CTX>): Omit<IStatic<MCD, CTX>, "create">
+  create(config?: IConfig<CTX>): Omit<IStatic<MCD, CTX>, "create">;
   /**
    * cookie 获取
    * @param key 键
    * @param config 配置
    * @returns 对应键值
    */
-  get<K extends keyof MCD>(key: K, config?: IConfig<CTX>): MCD[K]
+  get<K extends keyof MCD>(key: K, config?: IConfig<CTX>): MCD[K];
   /**
    * cookie 设置
    * @param key 键
@@ -88,21 +90,21 @@ interface IStatic<MCD extends IMiniCookieData, CTX> {
    * @param config 配置
    * @returns boolean
    */
-  set<K extends keyof MCD, V extends MCD[K]>(key: K, val: V, config?: IConfig<CTX>): boolean
+  set<K extends keyof MCD, V extends MCD[K]>(key: K, val: V, config?: IConfig<CTX>): boolean;
   /**
    * cookie 删除
    * @param key 键
    * @param config 配置
    * @returns boolean
    */
-  del<K extends keyof MCD>(key: K, config?: IConfig<CTX>): boolean
+  del<K extends keyof MCD>(key: K, config?: IConfig<CTX>): boolean;
   /**
    * cookie 是否存在
    * @param key 键
    * @param config 配置
    * @returns boolean
    */
-  has<K extends keyof MCD>(key: K, config?: IConfig<CTX>): boolean
+  has<K extends keyof MCD>(key: K, config?: IConfig<CTX>): boolean;
   /**
    * cookie 序列化
    * @param key 键
@@ -110,21 +112,16 @@ interface IStatic<MCD extends IMiniCookieData, CTX> {
    * @param config 配置
    * @returns string
    */
-  serialize(key: string, val: any, config?: IConfig<CTX>): string
+  serialize(key: string, val: any, config?: IConfig<CTX>): string;
   /**
    * cookie 反序列化
    * @param cookieStr cookie字符串
    * @returns Object
    */
-  parse<O extends MCD>(cookieStr: string): O
-  /**
-   * 当前版本号
-   */
-  VERSION: string
+  parse<O extends MCD>(cookieStr: string): O;
 }
 
-
 /**
- * cookie 数据类型
+ * @minisss/cookie 自定义TS类型提示
  */
-interface IMiniCookieData { }
+interface IMSCookieData {}

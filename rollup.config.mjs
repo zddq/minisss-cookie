@@ -9,15 +9,15 @@ import terser from "@rollup/plugin-terser";
 /**
  * @type {import("rollup").RollupOptions}
  */
-const config = {
+export default {
   input: "src/index.ts",
   output: [
-    { format: "esm", file: "dist/index.esm.js" },
-    { format: "cjs", file: "dist/index.cjs.js" },
-    { format: "umd", file: "dist/index.umd.js", name: "miniCookie" },
+    { format: "umd", file: "out/index.umd.js", name: "MSCookie" },
+    { format: "esm", file: "out/index.esm.js" },
+    { format: "cjs", file: "out/index.cjs.js" },
   ],
   plugins: [
-    del({ targets: ["dist/*"] }),
+    del({ targets: ["out/*"] }),
     nodeResolve(),
     typescript(),
     commonjs(),
@@ -25,6 +25,7 @@ const config = {
     babel({ babelHelpers: "bundled", browserslistConfigFile: true, presets: [["@babel/preset-env", { targets: { ie: "11" } }]], }),
     terser({ compress: { drop_console: true, drop_debugger: true, }, }),
   ],
+  treeshake: true,
+  cache: true,
 };
 
-export default config;

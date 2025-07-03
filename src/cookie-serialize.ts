@@ -19,7 +19,7 @@ export default function (key: string, val: any, config: IConfig = {}): string {
     throw new TypeError("argument name is invalid");
   }
 
-  const value = encodeURIComponent(typeof val === "string" ? val : JSON.stringify(val).trim());
+  const value = encodeURIComponent(typeof val === "string" ? val : JSON.stringify(val));
   if (value && !RE_specialContent.test(value)) {
     throw new TypeError("argument val is invalid");
   }

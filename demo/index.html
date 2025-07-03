@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MiniCookie</title>
+    <title>@minisss/cookie MSCookie</title>
   </head>
 
   <body>
-    <script type="module">
-      import mc from "../dist/index.esm.js";
-      console.log("mc 包对象: ", mc);
-      window.MC = mc;
-      mc.set("key", "val");
-      mc.set("userInfo", {
+    <script src="../out/index.umd.js"></script>
+    <script>
+      console.log("MSCookie 包对象: ", MSCookie);
+      window.MSCookie = MSCookie;
+      MSCookie.set("key", "val");
+      MSCookie.set("userInfo", {
         userInfo: {
           id: 2596922,
           name: "德古拉.张三",
@@ -33,7 +33,7 @@
         pushCode: "27A03A",
         email: "2@yupaowang.com",
         phone: "153****3943",
-        isBindWechat: false,
+        isBindWeChat: false,
         companyInfo: { id: 108156, fullName: "成都三盟联物科技有限公司", shortName: "芜湖" },
         trade: [{ id: 118, key: "测试" }],
         hrStaff: { id: 28348, role: 1 },
@@ -47,8 +47,54 @@
         deliverRed: false,
         invitationRed: true,
       });
-      console.log(mc.has("key"));
-      console.log(mc.get("key"));
+      console.log(MSCookie.has("key"));
+      console.log(MSCookie.get("key"));
+      console.log(MSCookie.set("k1", "k1vvv"));
     </script>
+
+    <!-- <script type="module">
+      import MSCookie from "../out/index.esm.js";
+      console.log("MSCookie 包对象: ", MSCookie);
+      window.MSCookie = MSCookie;
+      MSCookie.set("key", "val");
+      MSCookie.set("userInfo", {
+        userInfo: {
+          id: 2596922,
+          name: "德古拉.张三",
+          sex: 2,
+          degree: 4,
+          phone: "153****3943",
+          email: "yangyilin@yupaowang.com",
+          college: 3783,
+          collegeName: "伊犁师范大学",
+          major: 19,
+          majorName: "中文学类",
+          graduation: "2023-07-01",
+          positionIntention: ["测试"],
+          cityIntention: ["成都市"],
+          avatar: "https://cdn6.haitou.cc/user/face/22/2596922_5aa0.jpg?v=1739183093",
+        },
+        userId: 2596922,
+        pushCode: "27A03A",
+        email: "2@yupaowang.com",
+        phone: "153****3943",
+        isBindWeChat: false,
+        companyInfo: { id: 108156, fullName: "成都三盟联物科技有限公司", shortName: "芜湖" },
+        trade: [{ id: 118, key: "测试" }],
+        hrStaff: { id: 28348, role: 1 },
+        infoFlag: true,
+        supAdminName: null,
+        supAdminPhone: null,
+        deliverNum: 95,
+        collectNum: 25,
+        browseNum: 0,
+        subscribeToNum: 0,
+        deliverRed: false,
+        invitationRed: true,
+      });
+      console.log(MSCookie.has("key"));
+      console.log(MSCookie.get("key"));
+      console.log(MSCookie.set("k1", "k1vvv"));
+    </script> -->
   </body>
 </html>

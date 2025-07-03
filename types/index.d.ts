@@ -3,7 +3,8 @@
 import type { GetServerSidePropsContext } from "next";
 
 /**
- * 浏览器/SSR-nextjs cookie 操作
+ * MSCookie 提供 浏览器 与 Next.js 统一 Cookie API 接口调用
+ * @description 推荐 MSCookie.create() 创建实例, 统一初始化配置, 避免重复配置
  */
-declare const MiniCookie: IStatic<IMiniCookieData, GetServerSidePropsContext>;
-export default MiniCookie
+declare const MSCookie: IStatic<IMSCookieData, GetServerSidePropsContext>;
+export default MSCookie;

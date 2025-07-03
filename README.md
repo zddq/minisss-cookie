@@ -1,11 +1,13 @@
 # @minisss/cookie
 
-@minisss/cookie 是一个轻量级的 JavaScript 库，旨在简化对浏览器 Document.cookie 的操作。它提供了一组简单易用的 API，允许开发者轻松地读取、设置和删除 cookie，而无需直接处理复杂的字符串操作。
+@minisss/cookie 库提供了一套统一且便捷的 Cookie API 接口，旨在简化 浏览器 与 Next.js 环境中 Cookie 的管理流程。
+
+The @minisss/cookie library offers a unified and convenient Cookie API interface, designed to streamline the management of cookies in both browser and Next.js environments.
 
 ## 特性
 
 - ✅ 支持 Nextjs SSR cookie 操作(传入 ctx 上下文即可)
-- ✅ 内置 TS 类型提示, 重写 IMiniCookieData 获得自定义 TS 类型提示
+- ✅ 内置 TS 类型提示, 重写 MSCookie 或 IMSCookieData 获得自定义 TS 类型提示
 - ✅ 支持 ESM CJS UMD
 - 🤡 支持广泛浏览器
 - 😄 无依赖包
@@ -31,56 +33,56 @@ bun install @minisss/cookie
 ### ESM xxx.js
 
 ```js
-import MiniCookie from "@minisss/cookie";
-MiniCookie.set("cookieName", "cookieValue");
-console.log(MiniCookie.get("cookieName"));
+import MSCookie from "@minisss/cookie";
+MSCookie.set("cookieName", "cookieValue");
+console.log(MSCookie.get("cookieName"));
 ```
 
 ### CJS xxx.js
 
 ```js
 // CJS xxx.js
-const MiniCookie = require("@minisss/cookie");
-MiniCookie.set("cookieName", "cookieValue");
-console.log(MiniCookie.get("cookieName"));
+const MSCookie = require("@minisss/cookie");
+MSCookie.set("cookieName", "cookieValue");
+console.log(MSCookie.get("cookieName"));
 ```
 
 ### UMD xxx.html
 
 ```js
-// UMD xxx.html 普通 script 直接导入 -> 访问全局变量 MiniCookie
-<script src="https://unpkg.com/@minisss/cookie@0.0.1-alpha.2"></script>;
+// UMD xxx.html 普通 script 直接导入 -> 访问全局变量 MSCookie
+<script src="https://unpkg.com/@minisss/cookie@1.0.5"></script>;
 <script>
-  console.log("MiniCookie 包对象: ", MiniCookie)
-  MiniCookie.set('cookieName', 'cookieValue')
-  console.log(MiniCookie.get('cookieName'))
-  console.log(MiniCookie.has('cookieName'))
+  console.log("MSCookie 包对象: ", MSCookie)
+  MSCookie.set('cookieName', 'cookieValue')
+  console.log(MSCookie.get('cookieName'))
+  console.log(MSCookie.has('cookieName'))
 </script>
 
 // script type module 模块化内部引入方式
 <script type="module">
-  import MiniCookie from "https://unpkg.com/@minisss/cookie@0.0.1-alpha.2/dist/index.esm.js";
-  console.log("MiniCookie 包对象: ", MiniCookie)
-  MiniCookie.set('cookieName', 'cookieValue')
-  console.log(MiniCookie.get('cookieName'))
-  console.log(MiniCookie.has('cookieName'))
-  console.log(MiniCookie.del('cookieName'))
-  console.log(MiniCookie.has('cookieName'))
+  import MSCookie from "https://unpkg.com/@minisss/cookie@1.0.5/out/index.esm.js";
+  console.log("MSCookie 包对象: ", MSCookie)
+  MSCookie.set('cookieName', 'cookieValue')
+  console.log(MSCookie.get('cookieName'))
+  console.log(MSCookie.has('cookieName'))
+  console.log(MSCookie.del('cookieName'))
+  console.log(MSCookie.has('cookieName'))
 </script>
 ```
 
 ## API
 
-| 方法名    | 描述             | 参数                        | 返回值          |
-| --------- | ---------------- | --------------------------- | --------------- |
-| create    | 创建 cookie 实例 | create(config)              | 实例            |
-| get       | 获取             | get(key, config)            | any             |
-| set       | 设置             | set(key, config)            | boolean         |
-| del       | 删除             | del(key, config)            | boolean         |
-| has       | 判断是否存在     | has (key, config)           | boolean         |
-| serialize | 序列化           | serialize(key, val, config) | string          |
-| parse     | 解析             | parse(cookieStr)            | IMiniCookieData |
-| version   | 版本号           | MC.version                  | string          |
+| 方法名及属性 | 描述     | 参数                        | 返回值        |
+| ------------ | -------- | --------------------------- | ------------- |
+| create       | 创建实例 | create(config)              | 实例          |
+| get          | 获取     | get(key, config)            | any           |
+| set          | 设置     | set(key, config)            | boolean       |
+| del          | 删除     | del(key, config)            | boolean       |
+| has          | 是否存在 | has (key, config)           | boolean       |
+| serialize    | 序列化   | serialize(key, val, config) | string        |
+| parse        | 解析     | parse(cookieStr)            | IMSCookieData |
+| VERSION      | 版本号   | MSCookie.VERSION            | string        |
 
 ## Config
 
@@ -97,17 +99,13 @@ console.log(MiniCookie.get("cookieName"));
 | priority | "High", "Medium", "Low" | 浏览器保留优先级权重<br> High - 高保留 <br> Medium - 中等保留 <br> Low - 低保留 <br> 当Cookie达存储上限时低保留权重会被优先清除 | "Medium" |
 | ctx | Nextjs.GetServerSidePropsContext | nextjs 服务端 cookie 获取及设置 | undefined |
 
-## 覆写 IMiniCookieData 获得自定义 TS 类型提示(可选)
+## 覆写 IMSCookieData 获得自定义 TS 类型提示(可选)
 
 ```js
-// 覆写 IMiniCookieData 类型接口已获得类型提示
-// 例如: 在 type/xxx.d.ts | global.d.ts 中定义 IMiniCookieData 类型接口
-declare namespace MiniCookie {
-  interface IMiniCookieData {
-    name:string
-    age:number
-  }
+// 例如: 在 types/xxx.d.ts | global.d.ts 中定义 IMSCookieData 类型接口
+interface IMSCookieData {
+  name:string
+  age:number
 }
-// 将 types/xxx.d.ts 加入到 tsconfig.json includes 中即可获得自定义类型提示功能咯
-
+// 将 types/xxx.d.ts 加入到 tsconfig.json includes 中即可获得自定义类型提示功能
 ```

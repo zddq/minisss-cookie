@@ -10,7 +10,7 @@ import PKG from "../package.json";
  * @name cookie-操作类
  * @param config 配置
  */
-class MCookie<MCD extends IMiniCookieData> {
+class MCookie<MCD extends IMSCookieData> {
   VERSION = PKG.version;
   private config: Partial<IConfig> = {};
   constructor(config: IConfig = {}) {
