@@ -1,7 +1,9 @@
 {
   "name": "@minisss/cookie",
   "version": "1.0.5",
-  "description": "A Document Browser cookie And Next.js cookie Manager Lib",
+  "description": "A Document Browser Cookie And Next.js Cookie Manager Lib",
+  "author": "minisss",
+  "license": "MIT",
   "keywords": [
     "@minisss/cookie",
     "MSCookie",
@@ -28,8 +30,6 @@
     "url": "https://github.com/zddq/minisss-cookie/issues",
     "email": "mini_npm_lib@163.com"
   },
-  "license": "MIT",
-  "author": "minisss",
   "scripts": {
     "w": "rollup -c rollup.config.mjs --watch",
     "b": "rollup -c rollup.config.mjs"
