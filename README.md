@@ -88,15 +88,15 @@ console.log(MSCookie.get("cookieName"));
 
 | 属性 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |
-| domain | string | 域名 | 默认当前文档域名 |
-| path | string | 路径 | 默认当前文档路径 |
-| expires | Date | 过期时间 | 默认会话模式 |
-| maxAge | number(单位: s) | 最大存活时间(推荐) <br>maxAge 优先级高于 expires | 空 |
-| httpOnly | boolean | 是否阻止客户端脚本访问该Cookie <br>**_只能在服务器端设置，不能在客户端设置_** | false |
-| secure | boolean | 是否只允许 HTTPS 请求访问 | false |
-| sameSite | "Strict", "Lax", "None" | 允许的跨域请求<br>Strict - 只允许同源的请求访问 <br>Lax - 允许跨域的请求访问 <br>None - 会在所有请求中发送，但需要同时设置Secure属性 | 空 |
+| domain | string | 可访问域名 | 当前文档域名 |
+| path | string | 可访问路径 | 当前文档路径 |
+| expires | Date | 过期时间 | 会话模式(浏览器关闭后清除所有会话 cookie) |
+| maxAge | number | 最大存活时间(单位: s) maxAge 高于 expires | 会话模式(浏览器关闭后清除所有会话 cookie) |
+| httpOnly | boolean | 阻止JS脚本获取该 cookie 值 <br>**_服务端设置有效<br>客户端设置无效_** | false |
+| secure | boolean | 只允许 https 域名访问 | false |
+| sameSite | "Strict", "Lax", "None" | 允许跨域发送的范围 <br>允许同源 - Strict <br>允许跨域 - Lax <br>允许所有 - None 需同时设置 secure 属性 | 浏览器自带默认值 |
 | partitioned | boolean | 是否开启分区 | false |
-| priority | "High", "Medium", "Low" | 浏览器保留优先级权重<br> High - 高保留 <br> Medium - 中等保留 <br> Low - 低保留 <br> 当Cookie达存储上限时低保留权重会被优先清除 | "Medium" |
+| priority | "High", "Medium", "Low" | 当存储达上限时按权重由低到高清除 <br>高保留权重 - High <br> 中保留权重 - Medium <br> 低保留权重 - Low <br> | "Medium" |
 | ctx | Nextjs.GetServerSidePropsContext | nextjs 服务端 cookie 获取及设置 | undefined |
 
 ## 覆写 IMSCookieData 获得自定义 TS 类型提示(可选)
