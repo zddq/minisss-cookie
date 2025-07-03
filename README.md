@@ -84,7 +84,7 @@ console.log(MSCookie.get("cookieName"));
 | parse        | 解析     | parse(cookieStr)            | IMSCookieData |
 | VERSION      | 版本号   | MSCookie.VERSION            | string        |
 
-## Config
+## IMSCookieConfig
 
 | 属性 | 类型 | 描述 | 默认值 |
 | --- | --- | --- | --- |

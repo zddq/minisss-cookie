@@ -6,7 +6,7 @@ import parse from "./cookie-parse";
  * @param config 配置
  * @returns 对应键值
  */
-export default function (key: any, config: IConfig = {}) {
+export default function (key: any, config: IMSCookieConfig = {}) {
   try {
     // SSR Next.js
     if (typeof window === "undefined") {

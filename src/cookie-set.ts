@@ -7,7 +7,7 @@ import serialize from "./cookie-serialize";
  * @param config 配置
  * @returns boolean
  */
-export default function (key: any, val: any, config: IConfig = {}) {
+export default function (key: any, val: any, config: IMSCookieConfig = {}) {
   try {
     const setCookieStr = serialize(String(key), val, config);
 

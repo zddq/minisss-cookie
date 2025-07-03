@@ -1,4 +1,4 @@
-import set from './cookie-set'
+import set from "./cookie-set";
 
 /**
  * cookie 设置
@@ -6,6 +6,6 @@ import set from './cookie-set'
  * @param config 配置
  * @returns boolean
  */
-export default function (key: any, config: IConfig = {}) {
-  return set(key, "", { ...config, maxAge: -1 })
+export default function (key: any, config: IMSCookieConfig = {}) {
+  return set(key, "", { ...config, maxAge: -1 });
 }

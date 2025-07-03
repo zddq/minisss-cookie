@@ -1,7 +1,7 @@
 /**
  * @minisss/cookie 可配置参数
  */
-interface IConfig<CTX extends any = any> {
+interface IMSCookieConfig<CTX extends any = any> {
   /**
    * 域
    * @description 指定了哪些域可以接收该Cookie
@@ -60,14 +60,14 @@ interface IConfig<CTX extends any = any> {
    */
   priority?: "Low" | "Medium" | "High";
 
-  /** SSR nextjs 服务端渲染上下文 */
+  /** Next.js SSR 服务端渲染上下文(req.context) */
   ctx?: CTX;
 }
 
 /**
  * @minisss/cookie 相关静态方法与属性
  */
-interface IStatic<MCD extends IMSCookieData, CTX> {
+interface IMSCookieStatic<MCD extends IMSCookieData, CTX> {
   /** 当前版本号 */
   VERSION: string;
   /**
@@ -75,14 +75,14 @@ interface IStatic<MCD extends IMSCookieData, CTX> {
    * @param config 配置
    * @return MSCookie 实例
    */
-  create(config?: IConfig<CTX>): Omit<IStatic<MCD, CTX>, "create">;
+  create(config?: IMSCookieConfig<CTX>): Omit<IMSCookieStatic<MCD, CTX>, "create">;
   /**
    * cookie 获取
    * @param key 键
    * @param config 配置
    * @returns 对应键值
    */
-  get<K extends keyof MCD>(key: K, config?: IConfig<CTX>): MCD[K];
+  get<K extends keyof MCD>(key: K, config?: IMSCookieConfig<CTX>): MCD[K];
   /**
    * cookie 设置
    * @param key 键
@@ -90,21 +90,21 @@ interface IStatic<MCD extends IMSCookieData, CTX> {
    * @param config 配置
    * @returns boolean
    */
-  set<K extends keyof MCD, V extends MCD[K]>(key: K, val: V, config?: IConfig<CTX>): boolean;
+  set<K extends keyof MCD, V extends MCD[K]>(key: K, val: V, config?: IMSCookieConfig<CTX>): boolean;
   /**
    * cookie 删除
    * @param key 键
    * @param config 配置
    * @returns boolean
    */
-  del<K extends keyof MCD>(key: K, config?: IConfig<CTX>): boolean;
+  del<K extends keyof MCD>(key: K, config?: IMSCookieConfig<CTX>): boolean;
   /**
    * cookie 是否存在
    * @param key 键
    * @param config 配置
    * @returns boolean
    */
-  has<K extends keyof MCD>(key: K, config?: IConfig<CTX>): boolean;
+  has<K extends keyof MCD>(key: K, config?: IMSCookieConfig<CTX>): boolean;
   /**
    * cookie 序列化
    * @param key 键
@@ -112,7 +112,7 @@ interface IStatic<MCD extends IMSCookieData, CTX> {
    * @param config 配置
    * @returns string
    */
-  serialize(key: string, val: any, config?: IConfig<CTX>): string;
+  serialize(key: string, val: any, config?: IMSCookieConfig<CTX>): string;
   /**
    * cookie 反序列化
    * @param cookieStr cookie字符串

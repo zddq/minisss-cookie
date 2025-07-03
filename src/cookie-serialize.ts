@@ -12,7 +12,7 @@ function isDate(val: any) {
  * @param config 配置
  * @returns string
  */
-export default function (key: string, val: any, config: IConfig = {}): string {
+export default function (key: string, val: any, config: IMSCookieConfig = {}): string {
   const opt = config || {};
 
   if (!RE_specialContent.test(key)) {

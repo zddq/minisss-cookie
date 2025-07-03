@@ -12,8 +12,8 @@ import PKG from "../package.json";
  */
 class MCookie<MCD extends IMSCookieData> {
   VERSION = PKG.version;
-  private config: Partial<IConfig> = {};
-  constructor(config: IConfig = {}) {
+  private config: Partial<IMSCookieConfig> = {};
+  constructor(config: IMSCookieConfig = {}) {
     this.config = config;
   }
   /**
@@ -22,7 +22,7 @@ class MCookie<MCD extends IMSCookieData> {
    * @param config 配置
    * @return {MCD[K]} 对应键值
    */
-  get<K extends keyof MCD>(key: K, config: IConfig = {}): MCD[K] {
+  get<K extends keyof MCD>(key: K, config: IMSCookieConfig = {}): MCD[K] {
     return get(key, { ...this.config, ...config });
   }
   /**
@@ -32,7 +32,7 @@ class MCookie<MCD extends IMSCookieData> {
    * @param config 配置
    * @return boolean
    */
-  set<K extends keyof MCD, V extends MCD[K]>(key: K, val: V, config: IConfig = {}): boolean {
+  set<K extends keyof MCD, V extends MCD[K]>(key: K, val: V, config: IMSCookieConfig = {}): boolean {
     return set(key, val, { ...this.config, ...config });
   }
   /**
@@ -41,7 +41,7 @@ class MCookie<MCD extends IMSCookieData> {
    * @param config 配置
    * @returns boolean
    */
-  del<K extends keyof MCD>(key: K, config: IConfig = {}) {
+  del<K extends keyof MCD>(key: K, config: IMSCookieConfig = {}) {
     return del(key, { ...this.config, ...config, maxAge: -1 });
   }
   /**
@@ -49,7 +49,7 @@ class MCookie<MCD extends IMSCookieData> {
    * @param key 键值
    * @param config 配置
    */
-  has<K extends keyof MCD>(key: K, config: IConfig = {}) {
+  has<K extends keyof MCD>(key: K, config: IMSCookieConfig = {}) {
     return has(key, { ...this.config, ...config });
   }
   /**
@@ -59,7 +59,7 @@ class MCookie<MCD extends IMSCookieData> {
    * @param config 配置
    * @returns string
    */
-  serialize(key: string, val: any, config: IConfig = {}): string {
+  serialize(key: string, val: any, config: IMSCookieConfig = {}): string {
     return serialize(key, val, { ...this.config, ...config });
   }
   /**
@@ -74,7 +74,7 @@ class MCookie<MCD extends IMSCookieData> {
 
 export default {
   VERSION: PKG.version,
-  create: (config: IConfig = {}) => new MCookie(config),
+  create: (config: IMSCookieConfig = {}) => new MCookie(config),
   get,
   set,
   del,
