@@ -16,10 +16,10 @@
     "out",
     "types"
   ],
-  "browser": "out/index.umd.js",
   "module": "out/index.esm.js",
-  "unpkg": "out/index.umd.js",
   "main": "out/index.cjs.js",
+  "browser": "out/index.umd.js",
+  "unpkg": "out/index.umd.js",
   "types": "types/index.d.ts",
   "homepage": "https://github.com/zddq/minisss-cookie/tree/main",
   "repository": {
